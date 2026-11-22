@@ -1,0 +1,11 @@
+# Respaldos y archivos de base de datos
+*.bak
+*.mdf
+*.ldf
+# Temporales del sistema y editores
+.DS_Store
+Thumbs.db
+~$*
+.vscode/
+# Credenciales
+*.env

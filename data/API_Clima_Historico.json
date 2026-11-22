@@ -1,0 +1,457 @@
+[
+ {
+  "Fecha_Consulta": "2026-08-01",
+  "Ciudad": "Leon",
+  "Temperatura_C": 14.2,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 85
+ },
+ {
+  "Fecha_Consulta": "2026-08-01",
+  "Ciudad": "Silao",
+  "Temperatura_C": 14.7,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 83
+ },
+ {
+  "Fecha_Consulta": "2026-08-01",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 13.9,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 89
+ },
+ {
+  "Fecha_Consulta": "2026-08-02",
+  "Ciudad": "Leon",
+  "Temperatura_C": 29.8,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 35
+ },
+ {
+  "Fecha_Consulta": "2026-08-02",
+  "Ciudad": "Silao",
+  "Temperatura_C": 18.2,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 56
+ },
+ {
+  "Fecha_Consulta": "2026-08-02",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 30.8,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 31
+ },
+ {
+  "Fecha_Consulta": "2026-08-03",
+  "Ciudad": "Leon",
+  "Temperatura_C": 21.0,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 60
+ },
+ {
+  "Fecha_Consulta": "2026-08-03",
+  "Ciudad": "Silao",
+  "Temperatura_C": 21.1,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 59
+ },
+ {
+  "Fecha_Consulta": "2026-08-03",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 19.6,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 68
+ },
+ {
+  "Fecha_Consulta": "2026-08-04",
+  "Ciudad": "Leon",
+  "Temperatura_C": 23.9,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 42
+ },
+ {
+  "Fecha_Consulta": "2026-08-04",
+  "Ciudad": "Silao",
+  "Temperatura_C": 22.7,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 45
+ },
+ {
+  "Fecha_Consulta": "2026-08-04",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 32.0,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": -5
+ },
+ {
+  "Fecha_Consulta": "2026-08-05",
+  "Ciudad": "León",
+  "Temperatura_C": 14.2,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 80
+ },
+ {
+  "Fecha_Consulta": "2026-08-05",
+  "Ciudad": "Silao",
+  "Temperatura_C": 14.9,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 79
+ },
+ {
+  "Fecha_Consulta": "2026-08-05",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 15.1,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 82
+ },
+ {
+  "Fecha_Consulta": "2026-08-06",
+  "Ciudad": "Leon",
+  "Temperatura_C": 21.3,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 61
+ },
+ {
+  "Fecha_Consulta": "2026-08-06",
+  "Ciudad": "Silao",
+  "Temperatura_C": "16.5",
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 88
+ },
+ {
+  "Fecha_Consulta": "2026-08-06",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 20.2,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 60
+ },
+ {
+  "Fecha_Consulta": "2026-08-07",
+  "Ciudad": "Leon",
+  "Temperatura_C": 31.8,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 36
+ },
+ {
+  "Fecha_Consulta": "2026-08-07",
+  "Ciudad": "Silao",
+  "Temperatura_C": 28.8,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 31
+ },
+ {
+  "Fecha_Consulta": "2026-08-07",
+  "Ciudad": "GTO",
+  "Temperatura_C": 23.9,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 46
+ },
+ {
+  "Fecha_Consulta": "2026-08-08",
+  "Ciudad": "Leon",
+  "Temperatura_C": 24.0,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 48
+ },
+ {
+  "Fecha_Consulta": "2026-08-08",
+  "Ciudad": "Silao",
+  "Temperatura_C": 22.5,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 48
+ },
+ {
+  "Fecha_Consulta": "2026-08-08",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 27.9,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 26
+ },
+ {
+  "Fecha_Consulta": "2026-08-09",
+  "Ciudad": "Leon",
+  "Temperatura_C": 16.0,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 89
+ },
+ {
+  "Fecha_Consulta": "2026-08-09",
+  "Ciudad": " silao ",
+  "Temperatura_C": 15.6,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 79
+ },
+ {
+  "Fecha_Consulta": "2026-08-09",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 14.1,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 91
+ },
+ {
+  "Fecha_Consulta": "2026-08-10",
+  "Ciudad": "Leon",
+  "Temperatura_C": null,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 92
+ },
+ {
+  "Fecha_Consulta": "2026-08-10",
+  "Ciudad": "Silao",
+  "Temperatura_C": 14.0,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 79
+ },
+ {
+  "Fecha_Consulta": "2026-08-10",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 23.5,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 40
+ },
+ {
+  "Fecha_Consulta": "2026-08-11",
+  "Ciudad": "Leon",
+  "Temperatura_C": 18.2,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 62
+ },
+ {
+  "Fecha_Consulta": "2026-08-11",
+  "Ciudad": "Silao",
+  "Temperatura_C": 13.4,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 120
+ },
+ {
+  "Fecha_Consulta": "2026-08-11",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 21.7,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 66
+ },
+ {
+  "Fecha_Consulta": "2026-08-12",
+  "Ciudad": "León",
+  "Temperatura_C": 28.6,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 39
+ },
+ {
+  "Fecha_Consulta": "2026-08-12",
+  "Ciudad": "Silao",
+  "Temperatura_C": 30.3,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 26
+ },
+ {
+  "Fecha_Consulta": "2026-08-12",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 28.6,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 31
+ },
+ {
+  "Fecha_Consulta": "2026-08-13",
+  "Ciudad": "Leon",
+  "Temperatura_C": 30.0,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 38
+ },
+ {
+  "Fecha_Consulta": "2026-08-13",
+  "Ciudad": "Silao",
+  "Temperatura_C": 31.4,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 36
+ },
+ {
+  "Fecha_Consulta": "2026-08-13",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 30.4,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 33
+ },
+ {
+  "Fecha_Consulta": "2026-08-14",
+  "Ciudad": "Leon",
+  "Temperatura_C": 23.4,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 51
+ },
+ {
+  "Fecha_Consulta": "2026-08-14",
+  "Ciudad": "Silao",
+  "Temperatura_C": 31.4,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 34
+ },
+ {
+  "Fecha_Consulta": "2026-08-14",
+  "Ciudad": "GTO",
+  "Temperatura_C": 23.0,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 43
+ },
+ {
+  "Fecha_Consulta": "2026-08-15",
+  "Ciudad": "Leon",
+  "Temperatura_C": 19.2,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 68
+ },
+ {
+  "Fecha_Consulta": "2026-08-15",
+  "Ciudad": "Silao",
+  "Temperatura_C": 21.6,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 65
+ },
+ {
+  "Fecha_Consulta": "2026-08-15",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 15.9,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 79
+ },
+ {
+  "Fecha_Consulta": "2026-08-16",
+  "Ciudad": "Leon",
+  "Temperatura_C": 13.6,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 79
+ },
+ {
+  "Fecha_Consulta": "2026-08-16",
+  "Ciudad": "Silao",
+  "Temperatura_C": 20.1,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 64
+ },
+ {
+  "Fecha_Consulta": "2026-08-16",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": null,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 67
+ },
+ {
+  "Fecha_Consulta": "2026-08-17",
+  "Ciudad": "Leon",
+  "Temperatura_C": 23.3,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 53
+ },
+ {
+  "Fecha_Consulta": "2026-08-17",
+  "Ciudad": "Silao",
+  "Temperatura_C": 24.7,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 45
+ },
+ {
+  "Fecha_Consulta": "2026-08-17",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 24.3,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 52
+ },
+ {
+  "Fecha_Consulta": "2026-08-18",
+  "Ciudad": "León",
+  "Temperatura_C": 31.4,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 29
+ },
+ {
+  "Fecha_Consulta": "2026-08-18",
+  "Ciudad": "Silao",
+  "Temperatura_C": 14.1,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 85
+ },
+ {
+  "Fecha_Consulta": "2026-08-18",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 31.8,
+  "Condicion_Climatica": "Caluroso",
+  "Humedad_Pct": 29
+ },
+ {
+  "Fecha_Consulta": "2026-08-19",
+  "Ciudad": "Leon",
+  "Temperatura_C": 21.8,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 57
+ },
+ {
+  "Fecha_Consulta": "2026-08-19",
+  "Ciudad": "Silao",
+  "Temperatura_C": 20.2,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 63
+ },
+ {
+  "Fecha_Consulta": "2026-08-19",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 20.1,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 65
+ },
+ {
+  "Fecha_Consulta": "2026-08-20",
+  "Ciudad": "Leon",
+  "Temperatura_C": 13.2,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 91
+ },
+ {
+  "Fecha_Consulta": "2026-08-20",
+  "Ciudad": "Silao",
+  "Temperatura_C": 19.9,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 62
+ },
+ {
+  "Fecha_Consulta": "2026-08-20",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 16.4,
+  "Condicion_Climatica": "Lluvia Intensa",
+  "Humedad_Pct": 92
+ },
+ {
+  "Fecha_Consulta": "2026-08-21",
+  "Ciudad": "Leon",
+  "Temperatura_C": 24.6,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 52
+ },
+ {
+  "Fecha_Consulta": "2026-08-21",
+  "Ciudad": "Silao",
+  "Temperatura_C": 23.3,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 47
+ },
+ {
+  "Fecha_Consulta": "2026-08-21",
+  "Ciudad": "Guanajuato",
+  "Temperatura_C": 23.0,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 46
+ },
+ {
+  "Fecha_Consulta": "2026-08-08",
+  "Ciudad": "Leon",
+  "Temperatura_C": 24.0,
+  "Condicion_Climatica": "Templado",
+  "Humedad_Pct": 48
+ },
+ {
+  "Fecha_Consulta": "2026-08-15",
+  "Ciudad": "Silao",
+  "Temperatura_C": 21.6,
+  "Condicion_Climatica": "Nublado",
+  "Humedad_Pct": 65
+ }
+]

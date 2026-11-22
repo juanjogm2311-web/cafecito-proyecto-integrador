@@ -1,0 +1,43 @@
+ID_Cliente,Nombre,Email,Telefono,Ciudad,Fecha_Registro
+CLI-001,  maría fernanda navarro castillo  ,maria.navarro1@correo.com,4776184138,Silao,2025-01-26
+CLI-002,José Luis Rojas Ruiz,jose.rojas2@correo.com,4777188185,Leon,2026-01-08
+CLI-003,Ana Karen Cruz Díaz,ana.cruz3@correo.com,4772521428,León,2026-02-13
+CLI-004,JUAN CARLOS NAVARRO ORTIZ,juan.navarro4@correo.com,4779362688,GTO,2025-04-30
+CLI-005,Daniela Díaz Reyes,daniela.diaz5@correo.com,,Silao,2026-02-12
+CLI-006,Luis Ángel Medina Reyes,  LUIS.MEDINA6@CORREO.COM,4775339316,GTO,2026-03-07
+CLI-007,Valeria Ortiz Medina,valeria.ortiz7@correo.com,4779039473,Leon,2026-06-10
+CLI-008,Diego   Alejandro Reyes Moreno,diego.reyes8@correo.com,4771425740,Silao,2025-08-18
+CLI-009,Sofía Jiménez González,sofia.jimenez9@correo.com,4771820199,Leon,2026-06-20
+CLI-010,Carlos Eduardo Navarro Vargas,carlos.navarro10@correo.com,,Leon,2026-03-16
+CLI-011,Ximena Morales González,ximena.morales11@correo.com,4779088515, leon ,2025-08-23
+CLI-012,Miguel Ángel Rojas Navarro,miguel.rojas12@correo.com,4773047042,Leon,2026-04-13
+CLI-013,Regina Vargas Morales,REGINA.VARGAS13@CORREO.COM ,4775211189,Leon,2026-02-16
+CLI-014,Fernando Vargas Torres,fernando.vargas14@correo.com,4779420478,Leon,2026-05-06
+CLI-015,Paola Moreno Navarro,paola.moreno15@correo.com,4777743569,Leon,2026-03-20
+CLI-016,Ricardo Rodríguez Torres,ricardo.rodriguez16@correo.com,4775513674,LEON,2025-01-10
+CLI-017,Andrea Hernández González,andrea.hernandez17@correo.com,4778687780,Leon,2026-06-20
+CLI-018,Jorge Medina Morales,jorge.medina18@correo.com,4777038721,Leon,2025-07-24
+CLI-019,Camila Ramírez Ruiz,camila.ramirez19@correo.com,,Guanajuato,2026-04-23
+CLI-020,Héctor Reyes Jiménez,hector.reyes20@correo.com,4779340912,Leon,2026-03-21
+CLI-021,Mariana Gutiérrez Vargas,mariana.gutierrez21@correo.com,4771564049,Leon,2025-10-25
+CLI-022,Alejandro Flores Cruz,alejandro.flores22@correo.com,4772650441,Leon,2026-03-25
+CLI-023,Renata Ruiz Ruiz,renata.ruiz23@correo.com,4779643174,Silao,2025-09-23
+CLI-024,Emilio Cruz Medina,emilio.cruz24@correo.com,4774071049,GTO,2026-03-12
+CLI-025,Lucía Muñoz Aguilar,lucia.munoz25@correo.com,4779038740,Guanajuato,2025-03-07
+CLI-026,Óscar Castillo Ramírez,oscar.castillo26@correo.com,4779362112,Leon,2026-01-15
+CLI-027,Natalia Martínez Rodríguez,natalia.martinez27@correo.com,4777900650,Leon,2025-05-30
+CLI-028,Rodrigo Cruz Medina,rodrigo.cruz28@correo.com,,Leon,2025-04-05
+CLI-029,Fátima García Cruz,fatima.garcia29@correo.com,4772393608,Leon,2025-07-23
+CLI-030,Sergio Sánchez Martínez,sergio.sanchez30@correo.com,4771749254,Leon,2025-10-02
+CLI-031,Itzel Vargas Jiménez,itzel.vargas31@correo.com,4776993671,GTO,2025-06-08
+CLI-032,Gerardo García Flores,gerardo.garcia32@correo.com,4779254204,Silao,2025-05-19
+CLI-033,Montserrat Gutiérrez Sánchez,montserrat.gutierrez33@correo.com,4778935346,Silao,2025-05-15
+CLI-034,Iván Mendoza Navarro,ivan.mendoza34@correo.com,,Silao,2025-10-25
+CLI-035,Karla López Díaz,karla.lopez35@correo.com,4773686393,Leon,2025-05-19
+CLI-036,Raúl Moreno Moreno,raul.moreno36@correo.com,4776133900,Leon,2026-06-04
+CLI-037,Brenda Díaz Gómez,brenda.diaz37@correo.com,4773492025,GTO,2026-06-17
+CLI-038,Arturo Moreno Rodríguez,arturo.moreno38@correo.com,4777308337,Guanajuato,2025-01-15
+CLI-039,Elena Martínez Gómez,elena.martinez39@correo.com,4772232006,Leon,2025-02-22
+CLI-040,Mauricio Muñoz Rivera,mauricio.munoz40@correo.com,4776929115,Leon,2025-01-27
+CLI-007,Valeria Ortiz Medina,valeria.ortiz7@correo.com,4779039473,Leon,2026-06-10
+CLI-022,Alejandro Flores Cruz,alejandro.flores22@correo.com,4772650441,Leon,2026-03-25
