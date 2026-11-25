@@ -1,66 +1,43 @@
-# Cafecito — Proyecto Integrador
-### Integración de Datos en Microsoft SQL Server
+# Cafecito · Proyecto Integrador
+### Integración de Datos en SQL Server
 
-**Materia:** Integración de Datos | Universidad Iberoamericana León  
-**Equipo:** 1 | **Grupo:** O3  
-**Tablero Trello:** https://trello.com/invite/b/6aa97d88102a03bae3a759d9/ATTIac21e3544634e35a84ad29c4d6a9c64d1C37751F/proyecto-integrador-equipo-01
+**Materia:** Integración de Datos | Universidad Iberoamericana León
+**Equipo:** 1 (Grupo O3) | **Tablero Trello:** [Proyecto Integrador · Equipo 01](https://trello.com/invite/b/6aa97d88102a03bae3a759d9/ATTIac21e3544634e35a84ad29c4d6a9c64d1C37751F/proyecto-integrador-equipo-01)
 
-![Logo Cafecito](assets/logo_negocio.png)
+![Logo del Negocio](assets/logo_negocio.png)
 
-## 1. Descripción del proyecto
-Cafecito es un caso de negocio de cafetería con ventas por sucursal y entregas a domicilio. El proyecto integra tres fuentes: la base relacional de ventas/clientes del e-commerce, un archivo JSON con clima histórico por ciudad y fecha, y un CSV de entregas con demora y calificación. El objetivo es analizar si las condiciones climáticas influyen en la mezcla de productos solicitados, el desempeño logístico y la satisfacción del cliente.
+## 1. Descripción del Proyecto
+Cafecito es una cafetería con sucursales en León, Silao y Guanajuato que vende por e-commerce con entrega a domicilio. Se integran **tres fuentes heterogéneas**: pedidos y clientes del sistema transaccional (`BD_Ventas_Cafecito`), el clima diario de una **API en JSON** y las entregas a domicilio en un **CSV**. Con una arquitectura Medallón en **Microsoft SQL Server** se responde la pregunta de negocio: *¿cómo afecta el clima a lo que piden los clientes y a su satisfacción con la entrega?*
 
-## 2. Arquitectura de integración
-![Arquitectura Medallón](assets/flujo_medallon_sql.png)
+## 2. Arquitectura de Integración (SQL Server)
+![Flujo de Integración Medallón](assets/flujo_medallon_sql.png)
 
-- **Bronce:** los datos originales se conservan en tablas de staging del esquema `stg` (`Clientes_Raw`, `Ventas_Raw`, `Clima_Raw`, `Clima_JSON_Raw`, `Entregas_Raw`).
-- **Plata:** los datos limpios, estandarizados, deduplicados y validados se guardan en el modelo relacional/dimensional. En la versión original del proyecto están en `dbo` (`dim_*` y `fact_*`).
-- **Oro:** las vistas analíticas para operación, Vista 360° y KPIs se exponen mediante vistas de consumo.
-- Para alinearse con la nomenclatura solicitada en la guía, `src/05_capas_medallon_compatibilidad.sql` crea los esquemas `bronce`, `plata` y `oro` como **vistas de compatibilidad** sobre los objetos existentes. No duplica físicamente los datos.
+* **Esquema `bronce` (Ingesta):** 5 tablas espejo con la carga cruda de las fuentes; todo en texto, sin alterar tipos ni limpiar.
+* **Esquema `plata` (Transformación y QA):** modelo relacional en 3FN (`dim_*`, `fact_*`). El procedimiento `plata.sp_limpiar_y_cargar_plata` estandariza textos (`TRIM`/`UPPER`), convierte fechas con `TRY_CONVERT`, elimina duplicados con `ROW_NUMBER()`, imputa faltantes (`COALESCE`/`ISNULL`, mediana, moda, promedio) y manda a cuarentena lo inválido (`plata.registros_rechazados`). Es **idempotente**: se puede ejecutar varias veces sin duplicar.
+* **Esquema `oro` (Consumo y BI):** `oro.vw_analitica_360_cliente` (Vista 360°) y KPIs: `vw_kpi_consumo_por_clima`, `vw_kpi_logistica_por_clima`, `vw_kpi_resumen_sucursal` y `vw_ventas_operativa`.
 
-## 3. Modelo Entidad-Relación
-![DER Cafecito](assets/diagrama_der_sqlserver.png)
+**Resultado clave:** con *lluvia intensa* la demora promedio sube a **51.04 min** y la calificación baja a **2.26**, frente a **4.29** con clima templado.
 
-El modelo contiene dimensiones de Ciudad, Sucursal, Categoría y Cliente; hechos de Pedido, Entrega y Clima diario. Las llaves foráneas mantienen la integridad referencial. Pedido–Entrega es 1 a 0..1; Cliente–Pedido es 1 a N; Ciudad se relaciona con sucursales, clientes y clima.
+| Entidad | Bronce (crudo) | Plata (válido) |
+|---|---|---|
+| Clientes | 42 | 41 (40 + `CLI-000` genérico) |
+| Pedidos | 135 | 129 |
+| Clima | 65 | 63 |
+| Entregas | 107 | 103 (1 huérfana a cuarentena) |
 
-## 4. Fuentes y volúmenes
-- Ventas/clientes: base relacional de e-commerce.
-- Clima: `data/API_Clima_Historico.json`, procesado con `OPENJSON`.
-- Entregas: `data/CSV_Entregas_ECommerce.csv`.
-- El proyecto reporta 135 pedidos crudos, 42 clientes, 65 registros de clima y 107 entregas antes de la limpieza.
+## 3. Modelo Entidad-Relación (DER)
+![Diagrama Entidad-Relación](assets/diagrama_der_sqlserver.png)
 
-## 5. Ejecución en SQL Server
-Ejecutar en SSMS en este orden, sobre una base de pruebas:
+## 4. Estructura del Repositorio (`/src`)
+* `01_ddl_arquitectura_der.sql`: creación de la base de datos, los esquemas `bronce`/`plata`/`oro`, tablas, llaves y catálogos.
+* `02_etl_ingesta_bronce.sql`: carga cruda (`INSERT`, `OPENJSON`; `BULK INSERT` y `OPENROWSET` como opción B comentada). Idempotente con `TRUNCATE`.
+* `03_etl_limpieza_plata.sql`: diagnóstico de anomalías, `sp_limpiar_y_cargar_plata`, `sp_registrar_cliente` y pruebas de calidad de plata.
+* `04_vistas_gold_bi.sql`: vistas oro (360° y KPIs), diccionario de datos con propiedades extendidas y pruebas de oro.
 
-1. `src/01_ddl_arquitectura_der.sql`
-2. `src/02_etl_ingesta_bronce.sql`
-3. `src/03_etl_limpieza_plata.sql`
-4. `src/04_vistas_gold_bi.sql`
-5. `src/05_capas_medallon_compatibilidad.sql`
+**Orden de ejecución:** `01 → 02 → 03 → 04`. El `01` elimina y recrea `BD_Cafecito`; `02` y `03` se pueden repetir sin duplicar.
 
-**Precaución:** el primer script original elimina y recrea `BD_Cafecito`. No ejecutarlo sobre una base que se quiera conservar sin hacer un respaldo. La secuencia completa es para una instalación limpia. La carga usa rutas/formatos definidos en los scripts originales; si se ejecuta en otra computadora, revisar las rutas locales de archivos antes de correrla.
-
-## 6. Estructura del repositorio
-- `src/01_ddl_arquitectura_der.sql`: base, esquemas iniciales, tablas, PK/FK/CHECK.
-- `src/02_etl_ingesta_bronce.sql`: ingesta desde los orígenes a staging.
-- `src/03_etl_limpieza_plata.sql`: diagnóstico, limpieza, deduplicación, integración y estandarización.
-- `src/04_vistas_gold_bi.sql`: vistas, procedimientos, diccionario, QA y metadatos.
-- `src/05_capas_medallon_compatibilidad.sql`: vistas `bronce`, `plata`, `oro`.
-
-## 7. Integrantes y roles
-- **Líder de Proyecto:** Juan José Gómez Montúfar — coordinación, Trello, integración, secuencia de ejecución y exposición.
-- **Data Architect / SQL Specialist:** André Campos Díaz — DER, DDL, PK/FK, modelo y diccionario.
-- **Data Engineer / Pipeline Lead:** Ana Sofía Arroniz Domínguez — ingesta, staging y ETL de limpieza.
-- **Data Quality & QA Specialist:** Paulina Karime Martínez Rivera — perfilado, reglas de calidad y pruebas.
-- **BI & Analytics Specialist:** Antonio Hernández Ontiveros — vistas analíticas, KPIs e insights.
-
-## 8. Resultados principales
-- 129 pedidos cargados después de eliminar 6 duplicados.
-- 103 entregas válidas después de eliminar 3 duplicados y rechazar 1 entrega huérfana.
-- 63 registros de clima después de eliminar 2 duplicados.
-- 27 entregas con lluvia intensa: demora promedio de 51.04 minutos y calificación promedio de 2.26.
-- Con clima templado: demora promedio de 24.05 minutos y calificación promedio de 4.29.
-- Recomendación de negocio: reforzar capacidad de reparto en días de lluvia intensa, comunicar tiempos realistas y ajustar promociones a la preferencia por bebidas calientes.
-
-## 9. Evidencias
-El documento completo del avance, el PDF, las capturas de SQL Server, el tablero de Trello y los scripts originales se conservan en `docs/`, `evidencias/` y `SQL/`.
+## 5. Integrantes y Roles (4 Roles Oficiales)
+* **Data Architect / SQL Specialist:** André Campos Díaz
+* **Data Engineer / Pipeline Lead:** Ana Sofía Arroniz Domínguez
+* **Data Quality & QA Specialist:** Paulina Karime Martínez Rivera
+* **Líder de Proyecto & BI Specialist:** Juan José Gómez Montúfar (Líder de Proyecto) y Antonio Hernández Ontiveros (BI & Analytics Specialist)

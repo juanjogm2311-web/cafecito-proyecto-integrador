@@ -2,10 +2,9 @@
 *.bak
 *.mdf
 *.ldf
-# Temporales del sistema y editores
+# Sistema y editores
 .DS_Store
 Thumbs.db
 ~$*
 .vscode/
-# Credenciales
 *.env

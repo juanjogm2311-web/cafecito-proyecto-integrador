@@ -1,28 +1,28 @@
-/*
-CAFECITO · EQUIPO 1 · GRUPO O3
-02_etl_ingesta_bronce.sql
-Carga los archivos y orígenes a staging (stg). En el proyecto actual,
-stg representa la capa cruda equivalente a Bronce.
-*/
 /* =====================================================================
-   PROYECTO INTEGRADOR - EQUIPO 1
-   Script 03 · EXTRACCIÓN y carga a STAGING (datos crudos, SIN limpiar)
-   Responsable: Ana Sofía Arroniz Domínguez (Data Engineer / Pipeline Lead)
+   CAFECITO · PROYECTO INTEGRADOR · EQUIPO 1 · GRUPO O3
+   src/02_etl_ingesta_bronce.sql
+   INGESTA a la capa BRONCE: datos crudos de las 3 fuentes, SIN limpiar.
+     · Origen 1: BD_Ventas_Cafecito (clientes y pedidos)  · Origen 2: API_Clima_Historico.json (OPENJSON)
+     · Origen 3: CSV_Entregas_ECommerce.csv
+   Responsable: Ana Sofía Arroniz Domínguez (Ingeniera ETL / Data Engineer)
+   IDEMPOTENTE: empieza con TRUNCATE de bronce; se puede ejecutar N veces sin duplicar.
+   Los datos vienen incrustados (INSERT / JSON en texto); la "Opción B" comentada carga
+   desde disco con OPENROWSET y BULK INSERT.
    ===================================================================== */
 USE BD_Cafecito;
 GO
 SET NOCOUNT ON;
 
 -- Permite volver a ejecutar el script sin duplicar la carga
-TRUNCATE TABLE stg.Clientes_Raw;
-TRUNCATE TABLE stg.Ventas_Raw;
-TRUNCATE TABLE stg.Clima_Raw;
-TRUNCATE TABLE stg.Clima_JSON_Raw;
-TRUNCATE TABLE stg.Entregas_Raw;
+TRUNCATE TABLE bronce.clientes_raw;
+TRUNCATE TABLE bronce.ventas_raw;
+TRUNCATE TABLE bronce.clima_raw;
+TRUNCATE TABLE bronce.clima_json_raw;
+TRUNCATE TABLE bronce.entregas_raw;
 GO
 
 /* ---------- ORIGEN 1a: clientes del e-commerce (extracción de BD_Ventas_Cafecito) ---------- */
-INSERT INTO stg.Clientes_Raw (ID_Cliente, Nombre, Email, Telefono, Ciudad, Fecha_Registro) VALUES
+INSERT INTO bronce.clientes_raw (ID_Cliente, Nombre, Email, Telefono, Ciudad, Fecha_Registro) VALUES
     (N'CLI-001', N'  maría fernanda navarro castillo  ', N'maria.navarro1@correo.com', N'4776184138', N'Silao', N'2025-01-26'),
     (N'CLI-002', N'José Luis Rojas Ruiz', N'jose.rojas2@correo.com', N'4777188185', N'Leon', N'2026-01-08'),
     (N'CLI-003', N'Ana Karen Cruz Díaz', N'ana.cruz3@correo.com', N'4772521428', N'León', N'2026-02-13'),
@@ -69,7 +69,7 @@ GO
 
 /* ---------- ORIGEN 1b: Ventas_Cafecito (pedidos del e-commerce) ----------
    Incluye los 5 pedidos originales del dataset (PED-101 a PED-105). */
-INSERT INTO stg.Ventas_Raw (ID_Pedido, ID_Cliente, Fecha_Hora, ID_Sucursal, Tipo_Producto, Monto_Total, Sucursal_Ciudad) VALUES
+INSERT INTO bronce.ventas_raw (ID_Pedido, ID_Cliente, Fecha_Hora, ID_Sucursal, Tipo_Producto, Monto_Total, Sucursal_Ciudad) VALUES
     (N'PED-101', N'CLI-001', N'2026-08-01 08:30:00', N'SUC-01', N'Bebida Caliente', N'145.00', N'Leon'),
     (N'PED-108', N'CLI-001', N'2026-08-01 09:45:00', N'SUC-03', N'Bebida Caliente', N'150.00', N'Silao'),
     (N'PED-102', N'CLI-002', N'2026-08-01 14:15:00', N'SUC-02', N'Bebida Fría', N'180.00', N'Leon'),
@@ -120,7 +120,7 @@ INSERT INTO stg.Ventas_Raw (ID_Pedido, ID_Cliente, Fecha_Hora, ID_Sucursal, Tipo
     (N'PED-148', N'CLI-003', N'2026-08-08 12:00:00', N'SUC-02', N'Repostería', N'135.00', N'Leon'),
     (N'PED-147', N'CLI-002', N'2026-08-08 13:45:00', N'SUC-02', N'Bebida Fría', N'-190.00', N'Leon'),
     (N'PED-150', N'CLI-019', N'2026-08-08 19:45:00', N'SUC-04', N'BEBIDA CALIENTE', N'115.00', N'Guanajuato');
-INSERT INTO stg.Ventas_Raw (ID_Pedido, ID_Cliente, Fecha_Hora, ID_Sucursal, Tipo_Producto, Monto_Total, Sucursal_Ciudad) VALUES
+INSERT INTO bronce.ventas_raw (ID_Pedido, ID_Cliente, Fecha_Hora, ID_Sucursal, Tipo_Producto, Monto_Total, Sucursal_Ciudad) VALUES
     (N'PED-154', N'CLI-032', N'2026-08-09 11:05:00', N'SUC-03', N'Bebida Fría', N'205.00', N'SILAO '),
     (N'PED-151', N'CLI-035', N'2026-08-09 12:05:00', N'SUC-01', N'Bebida Caliente', N'185.00', N'Leon'),
     (N'PED-156', N'CLI-019', N'2026-08-09 13:00:00', N'SUC-04', N'Bebida Caliente', N'125.00', N'Guanajuato'),
@@ -171,7 +171,7 @@ INSERT INTO stg.Ventas_Raw (ID_Pedido, ID_Cliente, Fecha_Hora, ID_Sucursal, Tipo
     (N'PED-195', N'CLI-017', N'2026-08-16 18:15:00', N'SUC-01', N'Bebida Caliente', N'$115.00', N'Leon'),
     (N'PED-199', N'CLI-026', N'2026-08-17 07:45:00', N'SUC-01', N'Bebida Fría', N'155.00', N'León'),
     (N'PED-200', N'CLI-020', N'2026-08-17 11:30:00', N'SUC-01  ', N'Bebida Fría', N'235.00', N'Leon');
-INSERT INTO stg.Ventas_Raw (ID_Pedido, ID_Cliente, Fecha_Hora, ID_Sucursal, Tipo_Producto, Monto_Total, Sucursal_Ciudad) VALUES
+INSERT INTO bronce.ventas_raw (ID_Pedido, ID_Cliente, Fecha_Hora, ID_Sucursal, Tipo_Producto, Monto_Total, Sucursal_Ciudad) VALUES
     (N'PED-202', N'CLI-018', N'2026-08-17 14:40:00', N'SUC-02', N'bebida fría', N'150.00', N'Leon'),
     (N'PED-204', N'CLI-008', N'2026-08-17 17:05:00', N'SUC-03', N'Bebida Caliente', N'$125.00', N'Silao'),
     (N'PED-203', N'CLI-016', N'2026-08-17 18:50:00', N'SUC-03', N'Bebida Fría', N'100.00', N'Silao'),
@@ -682,10 +682,10 @@ IF ISJSON(@json) = 0
     THROW 50001, 'El contenido recibido de la API no es un JSON válido.', 1;
 
 -- (a) se guarda la respuesta completa
-INSERT INTO stg.Clima_JSON_Raw (Respuesta_JSON) VALUES (@json);
+INSERT INTO bronce.clima_json_raw (Respuesta_JSON) VALUES (@json);
 
 -- (b) se aplana en filas con OPENJSON ... WITH
-INSERT INTO stg.Clima_Raw (Fecha_Consulta, Ciudad, Temperatura_C, Condicion_Climatica, Humedad_Pct)
+INSERT INTO bronce.clima_raw (Fecha_Consulta, Ciudad, Temperatura_C, Condicion_Climatica, Humedad_Pct)
 SELECT Fecha_Consulta, Ciudad, Temperatura_C, Condicion_Climatica, Humedad_Pct
 FROM OPENJSON(@json)
 WITH (
@@ -701,15 +701,15 @@ GO
    Cada INSERT corresponde a una fila del CSV (campos vacíos = '' como en el archivo).
 
    OPCIÓN B (cargar el archivo .csv del disco del servidor con BULK INSERT):
-     CREATE TABLE stg.Entregas_CSV (ID_Envio NVARCHAR(20), ID_Pedido NVARCHAR(20),
+     CREATE TABLE bronce.entregas_csv (ID_Envio NVARCHAR(20), ID_Pedido NVARCHAR(20),
          Fecha_Entrega NVARCHAR(30), Minutos_Demora NVARCHAR(20), Calificacion_Cliente NVARCHAR(20));
-     BULK INSERT stg.Entregas_CSV
+     BULK INSERT bronce.entregas_csv
      FROM 'C:\Cafecito\CSV_Entregas_ECommerce.csv'
      WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '0x0a', CODEPAGE = '65001');
-     INSERT INTO stg.Entregas_Raw (ID_Envio, ID_Pedido, Fecha_Entrega, Minutos_Demora, Calificacion_Cliente)
-     SELECT * FROM stg.Entregas_CSV;
+     INSERT INTO bronce.entregas_raw (ID_Envio, ID_Pedido, Fecha_Entrega, Minutos_Demora, Calificacion_Cliente)
+     SELECT * FROM bronce.entregas_csv;
 */
-INSERT INTO stg.Entregas_Raw (ID_Envio, ID_Pedido, Fecha_Entrega, Minutos_Demora, Calificacion_Cliente) VALUES
+INSERT INTO bronce.entregas_raw (ID_Envio, ID_Pedido, Fecha_Entrega, Minutos_Demora, Calificacion_Cliente) VALUES
     (N'ENV-501', N'PED-101', N'01/08/2026', N'45', N'2'),
     (N'ENV-502', N'PED-102', N'01-08-2026', N'20', N'5'),
     (N'ENV-503', N'PED-103', N'2026/08/02', N'', N'4'),
@@ -760,7 +760,7 @@ INSERT INTO stg.Entregas_Raw (ID_Envio, ID_Pedido, Fecha_Entrega, Minutos_Demora
     (N'ENV-548', N'PED-158', N'10/08/2026', N'57', N'1'),
     (N'ENV-549', N'PED-161', N'2026/08/11', N'26', N'4'),
     (N'ENV-550', N'PED-165', N'2026-08-11', N'56', N'2');
-INSERT INTO stg.Entregas_Raw (ID_Envio, ID_Pedido, Fecha_Entrega, Minutos_Demora, Calificacion_Cliente) VALUES
+INSERT INTO bronce.entregas_raw (ID_Envio, ID_Pedido, Fecha_Entrega, Minutos_Demora, Calificacion_Cliente) VALUES
     (N'ENV-551', N'PED-168', N'11/08/2026', N'31', N'4'),
     (N'ENV-552', N'PED-167', N'2026-08-11', N'39', N'3'),
     (N'ENV-553', N'PED-164', N'2026/08/11', N'34', N''),
@@ -811,7 +811,7 @@ INSERT INTO stg.Entregas_Raw (ID_Envio, ID_Pedido, Fecha_Entrega, Minutos_Demora
     (N'ENV-598', N'PED-222', N'20/08/2026', N'25', N'5'),
     (N'ENV-599', N'PED-219', N'20/08/2026', N'41', N'3'),
     (N'ENV-600', N'PED-227', N'2026-08-21', N'29', N'4');
-INSERT INTO stg.Entregas_Raw (ID_Envio, ID_Pedido, Fecha_Entrega, Minutos_Demora, Calificacion_Cliente) VALUES
+INSERT INTO bronce.entregas_raw (ID_Envio, ID_Pedido, Fecha_Entrega, Minutos_Demora, Calificacion_Cliente) VALUES
     (N'ENV-601', N'PED-226', N'2026-08-21', N'21', N'4'),
     (N'ENV-602', N'PED-228', N'21-08-2026', N'25', N'5'),
     (N'ENV-603', N'PED-229', N'21/08/2026', N'24', N'4'),
@@ -822,8 +822,8 @@ INSERT INTO stg.Entregas_Raw (ID_Envio, ID_Pedido, Fecha_Entrega, Minutos_Demora
 GO
 
 -- Verificación de la extracción (resultado esperado: 42 | 135 | 65 | 107)
-SELECT 'stg.Clientes_Raw' AS Tabla, COUNT(*) AS Registros FROM stg.Clientes_Raw
-UNION ALL SELECT 'stg.Ventas_Raw',   COUNT(*) FROM stg.Ventas_Raw
-UNION ALL SELECT 'stg.Clima_Raw',    COUNT(*) FROM stg.Clima_Raw
-UNION ALL SELECT 'stg.Entregas_Raw', COUNT(*) FROM stg.Entregas_Raw;
+SELECT 'bronce.clientes_raw' AS Tabla, COUNT(*) AS Registros FROM bronce.clientes_raw
+UNION ALL SELECT 'bronce.ventas_raw',   COUNT(*) FROM bronce.ventas_raw
+UNION ALL SELECT 'bronce.clima_raw',    COUNT(*) FROM bronce.clima_raw
+UNION ALL SELECT 'bronce.entregas_raw', COUNT(*) FROM bronce.entregas_raw;
 GO
